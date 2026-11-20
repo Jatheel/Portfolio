@@ -1,0 +1,160 @@
+/* Hero and About. */
+.hero {
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  align-items: center;
+  padding: var(--s-8) var(--gutter);
+}
+
+.hero__inner {
+  width: 100%;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--veil);
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.hero__title {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: var(--s-3) 0 var(--s-1);
+}
+
+.hero__role {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--copper-ink);
+  margin-bottom: var(--s-3);
+}
+
+.hero__intro {
+  font-size: var(--fs-lead);
+  max-width: 58ch;
+}
+
+.hero__rotator {
+  font-family: var(--font-head);
+  font-size: var(--fs-h3);
+  color: var(--muted);
+}
+
+.rotator {
+  color: var(--accent);
+  font-weight: 600;
+  border-bottom: 2px solid var(--copper);
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin: var(--s-4) 0 var(--s-5);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-2);
+  max-width: 640px;
+  margin: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  padding: var(--s-2) 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.stat__value {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 1.3rem + 2vw, 2.75rem);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.stat__label {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
+/* About */
+.about {
+  display: grid;
+  gap: var(--s-5);
+}
+
+.about__location {
+  color: var(--muted);
+}
+
+.about__avatar {
+  margin-bottom: var(--s-3);
+}
+
+.monogram {
+  width: 120px;
+  height: 120px;
+}
+
+.monogram__pins line {
+  stroke: var(--copper);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.monogram__body {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.monogram__notch {
+  fill: var(--line);
+}
+
+.monogram__text {
+  fill: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.edu__item + .edu__item {
+  margin-top: var(--s-2);
+  padding-top: var(--s-2);
+  border-top: 1px solid var(--line);
+}
+
+.edu__title {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.edu__inst,
+.edu__detail {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+@media (min-width: 720px) {
+  .about {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: start;
+  }
+}

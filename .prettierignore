@@ -1,0 +1,10 @@
+CLAUDE.md
+*.pdf
+dist
+node_modules
+package-lock.json
+public/img
+public/cv
+src/data/image-manifest.json
+.lighthouseci
+.playwright-mcp

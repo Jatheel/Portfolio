@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Runs before first paint: marks JS as available, applies the saved or system theme
+         without a flash, and decides whether the boot animation plays (first visit only). -->
+    <script>
+      (function () {
+        var d = document.documentElement;
+        var t = null;
+        var seen = false;
+        d.classList.add('js');
+        try {
+          t = localStorage.getItem('theme');
+          seen = localStorage.getItem('booted') === '1';
+        } catch (e) {}
+        if (t !== 'light' && t !== 'dark') {
+          t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        d.setAttribute('data-theme', t);
+        if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          d.classList.add('is-booting');
+        }
+      })();
+    </script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!--HEAD-->
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="boot" aria-hidden="true">
+      <svg class="boot__mark" viewBox="0 0 120 120" width="120" height="120">
+        <path class="boot__trace" d="M10 60H34M86 60H110M60 10V34M60 86V110" />
+        <rect class="boot__chip" x="34" y="34" width="52" height="52" rx="6" />
+        <text class="boot__text" x="60" y="67" text-anchor="middle">MJ</text>
+      </svg>
+    </div>
+    <canvas class="scene" data-scene aria-hidden="true" tabindex="-1"></canvas>
+    <!--HEADER-->
+    <main id="main" tabindex="-1">
+      <!--SECTIONS-->
+    </main>
+    <!--FOOTER-->
+    <!--DIALOGS-->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

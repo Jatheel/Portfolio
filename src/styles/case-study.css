@@ -1,0 +1,118 @@
+/* Case studies (inline without JS, inside the drawer with JS) and the architecture flow. */
+.case-studies {
+  margin-top: var(--s-8);
+  display: grid;
+  gap: var(--s-4);
+}
+
+/* With JS the case studies open in the drawer instead of sitting inline. */
+.js .case-studies {
+  display: none;
+}
+
+.case-studies__title {
+  font-size: var(--fs-h3);
+}
+
+.case-studies > .cs {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-3);
+}
+
+.cs__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-1) var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.cs__title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  margin-bottom: var(--s-1);
+}
+
+.cs__title:focus {
+  outline: none;
+}
+
+.cs__subtitle {
+  color: var(--copper-ink);
+  font-weight: 500;
+}
+
+.cs__block {
+  padding-top: var(--s-3);
+  margin-top: var(--s-3);
+  border-top: 1px solid var(--line);
+}
+
+.cs__h {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--s-1);
+}
+
+.cs__list {
+  padding-left: 1.2em;
+}
+
+.cs__list li {
+  margin-bottom: 6px;
+  max-width: var(--measure);
+}
+
+.cs__list li::marker {
+  color: var(--copper);
+}
+
+.cs__credit {
+  margin-top: var(--s-3);
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.cs__back {
+  margin-top: var(--s-3);
+}
+
+.cs__back .icon {
+  display: inline;
+  transform: rotate(180deg);
+  vertical-align: -3px;
+}
+
+.panel .cs__back {
+  display: none;
+}
+
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin-top: var(--s-2);
+}
+
+.flow__step {
+  padding: 6px 12px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.flow__arrow {
+  color: var(--copper-ink);
+}

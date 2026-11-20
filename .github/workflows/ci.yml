@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint, format and type check
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm test
+
+      # Strict on main: launch is blocked until every TO_CONFIRM fact is settled.
+      - name: Data check
+        run: |
+          if [ "$GITHUB_REF" = "refs/heads/main" ]; then
+            npm run check:data -- --strict
+          else
+            npm run check:data
+          fi
+
+      - name: Build (includes JS budget check)
+        run: npm run build
+
+      - name: Link check
+        run: npm run check:links
+
+      - name: Lighthouse CI
+        run: npx lhci autorun

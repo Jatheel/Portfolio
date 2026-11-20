@@ -1,0 +1,134 @@
+/* Projects: filters, cards, up next. */
+.filters {
+  margin-bottom: var(--s-3);
+}
+
+.filters__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1);
+}
+
+.projects {
+  display: grid;
+  gap: var(--s-3);
+}
+
+.project-card {
+  display: flex;
+}
+
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.project-card__cover {
+  margin: calc(var(--s-3) * -1) calc(var(--s-3) * -1) var(--s-2);
+  overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.project-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-1) var(--s-2);
+  margin-bottom: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.project-card__title {
+  font-size: var(--fs-h3);
+  margin-bottom: 4px;
+}
+
+.project-card__link {
+  text-decoration: none;
+}
+
+/* The title link covers the whole card so a click anywhere opens the case study. */
+.project-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+}
+
+.project-card__link:focus-visible {
+  outline: none;
+}
+
+.project-card__link:focus-visible::after {
+  outline: 3px solid var(--signal);
+  outline-offset: 3px;
+}
+
+.project-card__subtitle {
+  color: var(--copper-ink);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.project-card__summary {
+  color: var(--muted);
+}
+
+.project-card .tags {
+  margin-top: auto;
+  padding-top: var(--s-1);
+}
+
+.project-card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-1);
+  margin-top: var(--s-2);
+  font-size: var(--fs-sm);
+}
+
+.project-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.project-card__ext {
+  position: relative;
+  z-index: 1;
+}
+
+.project-card.is-filtered-out {
+  display: none;
+}
+
+.up-next {
+  margin-top: var(--s-5);
+}
+
+.up-next__list li + li {
+  margin-top: var(--s-1);
+}
+
+@media (min-width: 720px) {
+  .projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1080px) {
+  .projects {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .project-card--featured:first-child {
+    grid-column: span 2;
+  }
+}

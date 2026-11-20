@@ -1,0 +1,7 @@
+{
+  "recurse": true,
+  "silent": true,
+  "timeout": 30000,
+  "retry": true,
+  "skip": ["^https://(www\\.)?linkedin\\.com", "^mailto:"]
+}

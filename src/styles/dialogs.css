@@ -1,0 +1,86 @@
+/* Dialogs: case-study drawer and photo lightbox. */
+html.panel-open {
+  overflow: hidden;
+}
+
+dialog {
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 0;
+}
+
+dialog::backdrop {
+  background: rgb(5 10 8 / 0.55);
+}
+
+.panel {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  border-radius: 0;
+}
+
+.panel__bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--s-1);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.panel__close {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.panel__content {
+  padding: var(--s-3) var(--gutter) var(--s-6);
+}
+
+.lightbox {
+  max-width: min(1100px, 94vw);
+  border-radius: var(--radius);
+  padding: var(--s-2);
+}
+
+.lightbox__close {
+  margin-left: auto;
+  display: grid;
+  margin-bottom: var(--s-1);
+}
+
+.lightbox__figure {
+  margin: 0;
+}
+
+.lightbox__figure img {
+  max-height: 78vh;
+  width: auto;
+  margin: 0 auto;
+}
+
+.lightbox__figure figcaption {
+  margin-top: var(--s-1);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+@media (min-width: 720px) {
+  .panel {
+    margin: 0 0 0 auto;
+    width: min(720px, 92vw);
+    border-left: 1px solid var(--line);
+  }
+}

@@ -1,0 +1,96 @@
+/* Now building: CircuitCoach progress panel. */
+.now {
+  max-width: 860px;
+}
+
+.now__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  margin-bottom: var(--s-2);
+}
+
+.now__meta {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.now__title {
+  font-size: var(--fs-h3);
+}
+
+.now__line {
+  font-size: var(--fs-lead);
+}
+
+.now__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-3);
+  margin-bottom: var(--s-3);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+.now__progress progress {
+  width: 100%;
+  height: 8px;
+  margin-bottom: var(--s-3);
+  accent-color: var(--accent);
+}
+
+.steps {
+  display: grid;
+  gap: var(--s-1);
+  margin-bottom: var(--s-3);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-1) 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.step__pad {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--copper);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--copper-ink);
+}
+
+.step--done .step__pad {
+  background: var(--st-completed);
+  border-color: var(--st-completed);
+  color: var(--surface);
+}
+
+.step--active .step__pad {
+  border-color: var(--st-ongoing);
+  color: var(--st-ongoing);
+}
+
+.step__opt,
+.step__state {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+.now__actions,
+.cs__links,
+.contact__cv-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-2);
+}

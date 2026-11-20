@@ -1,0 +1,237 @@
+/* Page frame: fixed scene canvas, sticky header, sections, footer. Mobile-first. */
+.scene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 600ms var(--ease);
+}
+
+/* The scene is a backdrop: dimmed on phones, and faded under the text column on wide screens. */
+.scene.is-ready {
+  opacity: 0.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene {
+    transition: none;
+  }
+}
+
+@media (min-width: 960px) {
+  .scene.is-ready {
+    opacity: 1;
+  }
+
+  .scene {
+    mask-image: linear-gradient(90deg, rgb(0 0 0 / 0.14) 0%, rgb(0 0 0 / 0.22) 45%, #000 85%);
+  }
+}
+
+html.no-webgl .scene,
+html:not(.js) .scene {
+  display: none;
+}
+
+.site-header,
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--veil);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  min-height: var(--header-h);
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  text-decoration: none;
+  font-family: var(--font-head);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.brand__chip {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent);
+  box-shadow:
+    -4px 0 0 -2.5px var(--copper),
+    4px 0 0 -2.5px var(--copper);
+}
+
+.brand__name {
+  /* Visually hidden on phones but still the link's accessible name. */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* On phones the nav is a horizontal scroller: no menu button, works without JS. */
+.nav {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  mask-image: linear-gradient(90deg, #000 85%, transparent);
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+.nav__list {
+  display: flex;
+  gap: var(--s-1);
+  white-space: nowrap;
+  padding: var(--s-1) var(--s-2) var(--s-1) 0;
+}
+
+.nav__link {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.nav__link:hover,
+.nav__link[aria-current='true'] {
+  color: var(--ink);
+  background: var(--surface-2);
+}
+
+.nav__link[aria-current='true'] {
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+.theme-toggle {
+  flex-shrink: 0;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.theme-toggle .icon:last-child,
+:root[data-theme='dark'] .theme-toggle .icon:first-child {
+  display: none;
+}
+
+:root[data-theme='dark'] .theme-toggle .icon:last-child {
+  display: block;
+}
+
+.section {
+  padding: var(--s-12) var(--gutter);
+  /* Skip layout and paint for off-screen sections until they approach the viewport. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+.section__inner,
+.hero__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.section__head {
+  margin-bottom: var(--s-5);
+}
+
+.section__index {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--copper-ink);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--s-1);
+}
+
+.section__title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+}
+
+.section__lead {
+  font-size: var(--fs-lead);
+  color: var(--muted);
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--veil);
+  padding: var(--s-4) var(--gutter);
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.site-footer__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+@media (min-width: 720px) {
+  .brand__name {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+  }
+}
+
+@media (min-width: 960px) {
+  .nav {
+    mask-image: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .nav__list {
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,207 @@
+/* Reusable components: buttons, chips, badges, cards, tags, links, dialogs. */
+.icon {
+  width: 1.1em;
+  height: 1.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-1);
+  min-height: 48px;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms var(--ease),
+    border-color 160ms var(--ease),
+    color 160ms var(--ease);
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.btn--primary:hover {
+  background: color-mix(in srgb, var(--accent) 88%, var(--ink));
+}
+
+.btn--ghost {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.btn--ghost:hover {
+  border-color: var(--copper);
+}
+
+.link {
+  color: var(--accent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1);
+  margin-bottom: var(--s-3);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 4px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: var(--fs-sm);
+}
+
+.chip--pad::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--copper);
+}
+
+.chip--button {
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.chip--button[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.chip--button:hover:not([aria-pressed='true']) {
+  border-color: var(--copper);
+}
+
+/* Status badge: dot + word, never colour alone. */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge--completed {
+  color: var(--st-completed);
+}
+
+.badge--ongoing {
+  color: var(--st-ongoing);
+}
+
+.badge--ongoing .badge__dot {
+  background: transparent;
+  border: 2px solid currentColor;
+}
+
+.badge--planned {
+  color: var(--st-planned);
+  border-style: dashed;
+}
+
+.badge--planned .badge__dot {
+  background: transparent;
+  border: 1.5px dashed currentColor;
+}
+
+.card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-3);
+}
+
+/* Thin copper trace that lights up on hover/focus. */
+.card--trace {
+  transition: border-color 200ms var(--ease);
+}
+
+.card--trace::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: var(--s-3);
+  width: 3px;
+  height: 32px;
+  border-radius: 0 2px 2px 0;
+  background: var(--copper);
+  transition: height 300ms var(--ease);
+}
+
+.card--trace:hover,
+.card--trace:focus-within,
+.card--trace.is-active {
+  border-color: var(--copper);
+}
+
+.card--trace:hover::before,
+.card--trace:focus-within::before {
+  height: calc(100% - var(--s-6));
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--st-completed);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--st-completed) 25%, transparent);
+}

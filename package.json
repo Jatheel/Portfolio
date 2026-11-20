@@ -1,0 +1,41 @@
+{
+  "name": "jatheel-portfolio",
+  "version": "1.0.0",
+  "description": "Mohamed Jatheel — portfolio site",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build && node scripts/check-budget.js",
+    "preview": "vite preview --host",
+    "lint": "eslint . && prettier --check . && tsc -p jsconfig.json",
+    "format": "prettier --write .",
+    "check:data": "node scripts/check-data.js",
+    "check:links": "linkinator dist --recurse --config linkinator.config.json",
+    "check:budget": "node scripts/check-budget.js",
+    "images": "node scripts/build-images.js",
+    "test": "node --test \"tests/*.test.js\""
+  },
+  "license": "UNLICENSED",
+  "type": "module",
+  "dependencies": {
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/sora": "^5.3.0",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@lhci/cli": "^0.16.1",
+    "@types/node": "^26.6.6",
+    "@types/three": "^0.187.0",
+    "eslint": "^9.39.5",
+    "linkinator": "^8.1.0",
+    "prettier": "^3.10.1",
+    "sharp": "^0.35.5",
+    "typescript": "~5.9",
+    "vite": "^7.3.8"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  }
+}
